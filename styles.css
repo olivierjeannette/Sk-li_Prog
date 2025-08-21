@@ -1,0 +1,442 @@
+/* Reset et variables CSS pour Skàli Prog */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Couleurs principales */
+    --primary: #1a1a1a;
+    --accent: #2d5a3d;
+    --bg-dark: #0d0d0d;
+    --bg-light: #1a1a1a;
+    --text-light: #f5f5f5;
+    --text-dim: #a0a0a0;
+    --border-color: #2a2a2a;
+    
+    /* Couleurs des catégories */
+    --crosstraining: #ef4444;
+    --musculation: #3b82f6;
+    --cardio: #10b981;
+    --hyrox: #f59e0b;
+    --recovery: #8b5cf6;
+    --technique: #06b6d4;
+    --other: #6b7280;
+    
+    /* Transitions */
+    --transition: all 0.3s ease;
+}
+
+/* Base styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Backgrounds */
+.bg-skali-dark { background: var(--bg-dark); }
+.bg-skali-light { background: var(--bg-light); }
+.bg-skali-accent { background: var(--accent); }
+
+/* Text colors */
+.text-skali-accent { color: var(--accent); }
+
+/* Borders */
+.border-skali { border-color: var(--border-color); }
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TV Mode Background */
+.tv-mode {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2d5a3d 100%);
+    height: 100vh;
+    max-height: 100vh;
+}
+
+/* Block Items */
+.block-item {
+    transition: var(--transition);
+    border: 2px solid var(--border-color);
+}
+
+.block-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(45, 90, 61, 0.2);
+}
+
+/* Calendar Days */
+.calendar-day {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: var(--bg-light);
+    border: 2px solid var(--border-color);
+    min-height: 100px;
+}
+
+.calendar-day:hover {
+    transform: scale(1.02);
+    border-color: var(--accent);
+}
+
+.calendar-day.has-session {
+    background: linear-gradient(135deg, var(--bg-light) 0%, rgba(45, 90, 61, 0.2) 100%);
+    border-color: var(--accent);
+}
+
+/* Category Styles */
+.category-crosstraining {
+    border-left: 4px solid var(--crosstraining);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.category-musculation {
+    border-left: 4px solid var(--musculation);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.category-cardio {
+    border-left: 4px solid var(--cardio);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.category-hyrox {
+    border-left: 4px solid var(--hyrox);
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.category-recovery {
+    border-left: 4px solid var(--recovery);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.category-technique {
+    border-left: 4px solid var(--technique);
+    background: rgba(6, 182, 212, 0.1);
+}
+
+.category-other {
+    border-left: 4px solid var(--other);
+    background: rgba(107, 114, 128, 0.1);
+}
+
+/* Tags */
+.tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-right: 4px;
+}
+
+.tag-crosstraining { background: var(--crosstraining); color: white; }
+.tag-musculation { background: var(--musculation); color: white; }
+.tag-cardio { background: var(--cardio); color: white; }
+.tag-hyrox { background: var(--hyrox); color: white; }
+.tag-recovery { background: var(--recovery); color: white; }
+.tag-technique { background: var(--technique); color: white; }
+.tag-other { background: var(--other); color: white; }
+
+/* Member Cards */
+.member-card {
+    transition: var(--transition);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+}
+
+.member-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(45, 90, 61, 0.2);
+}
+
+/* Quick Add FAB */
+.quick-add-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 40;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Elements */
+input, textarea, select {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(45, 90, 61, 0.1);
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--text-dim);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #3a6b4d;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--border-color);
+    color: var(--text-light);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: #3a3a3a;
+}
+
+/* Modal */
+.modal-backdrop {
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Performance Trends */
+.performance-trend-up { color: var(--cardio); }
+.performance-trend-down { color: var(--crosstraining); }
+.performance-trend-stable { color: var(--other); }
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar-day {
+        min-height: 80px;
+        font-size: 0.9rem;
+    }
+    
+    .quick-add-fab {
+        bottom: 15px;
+        right: 15px;
+        width: 56px;
+        height: 56px;
+    }
+    
+    .tag {
+        font-size: 0.6rem;
+        padding: 1px 6px;
+    }
+}
+
+@media (max-width: 640px) {
+    .calendar-day {
+        min-height: 60px;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+    
+    .block-item {
+        padding: 0.75rem;
+    }
+    
+    .member-card {
+        padding: 0.75rem;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Focus visible pour accessibilité */
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Navigation active states */
+.nav-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+/* TV Mode custom text sizes */
+.tv-mode .text-8xl {
+    font-size: 6rem !important;
+    line-height: 1.1 !important;
+}
+
+.tv-mode .text-7xl {
+    font-size: 4.5rem !important;
+    line-height: 1.1 !important;
+}
+
+.tv-mode .text-6xl {
+    font-size: 3.75rem !important;
+    line-height: 1.2 !important;
+}
+
+.tv-mode .text-5xl {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+}
+
+.tv-mode .text-4xl {
+    font-size: 2.25rem !important;
+    line-height: 1.3 !important;
+}
+
+.tv-mode .text-3xl {
+    font-size: 1.875rem !important;
+    line-height: 1.3 !important;
+}
+
+/* Overflow styles for TV mode */
+.tv-mode body {
+    overflow: hidden !important;
+}
+
+/* Notification styles */
+.notification {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Table styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+tr:hover {
+    background: rgba(45, 90, 61, 0.1);
+}
+
+/* Grid layouts */
+.grid-auto-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+/* Error states */
+.error {
+    border-color: var(--crosstraining) !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+    color: var(--crosstraining);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Success states */
+.success {
+    border-color: var(--cardio) !important;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

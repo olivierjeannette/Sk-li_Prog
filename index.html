@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skali Prog - Planificateur de Séances</title>
+    <script src="js/supabaseManager.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app" class="min-h-screen">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="fixed inset-0 bg-skali-dark flex items-center justify-center z-50">
+            <div class="bg-skali-light rounded-xl p-8 max-w-md w-full mx-4 border border-skali">
+                <div class="text-center mb-6">
+                    <i class="fas fa-dumbbell text-skali-accent text-4xl mb-3"></i>
+                    <h1 class="text-3xl font-bold mb-2">Skali Prog</h1>
+                    <p class="text-gray-400">Accès administrateur requis</p>
+                </div>
+                <div class="space-y-4">
+                    <input type="password" id="adminPassword" placeholder="Mot de passe admin" 
+                           class="w-full rounded-lg p-3" 
+                           onkeypress="if(event.key==='Enter') Auth.login()">
+                    <button onclick="Auth.login()" class="btn-primary w-full py-3 rounded-lg font-medium">
+                        <i class="fas fa-lock mr-2"></i>Se connecter
+                    </button>
+                </div>
+                <p id="loginError" class="text-red-500 text-sm mt-3 text-center hidden">Mot de passe incorrect</p>
+            </div>
+        </div>
+
+        <!-- Main App (Hidden until login) -->
+        <div id="mainApp" class="hidden">
+            <!-- Navigation -->
+            <nav class="bg-skali-light border-b border-skali no-print">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between h-16 items-center">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-dumbbell text-skali-accent text-2xl"></i>
+                            <h1 class="text-xl font-bold">Skali Prog</h1>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button onclick="ViewManager.showView('calendar')" id="calendarBtn" class="nav-btn btn-secondary px-4 py-2 rounded-lg">
+                                <i class="fas fa-calendar mr-2"></i>Planning
+                            </button>
+                            <button onclick="ViewManager.showView('members')" id="membersBtn" class="nav-btn btn-secondary px-4 py-2 rounded-lg">
+                                <i class="fas fa-users mr-2"></i>Adhérents
+                            </button>
+                            <div class="flex items-center space-x-2">
+                                <button onclick="BackupManager.showBackupModal()" class="btn-primary px-4 py-2 rounded-lg">
+                                    <i class="fas fa-download mr-2"></i>Sauvegarde
+                                </button>
+                                <button onclick="PDFExporter.exportWeeklyPDF()" class="btn-secondary px-4 py-2 rounded-lg">
+                                    <i class="fas fa-file-pdf mr-2"></i>Export PDF
+                                </button>
+                            </div>
+                            <button onclick="Auth.logout()" class="btn-secondary px-4 py-2 rounded-lg">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Quick Add FAB -->
+            <button onclick="PerformanceManager.openQuickPerformanceModal()" class="quick-add-fab btn-primary w-14 h-14 rounded-full shadow-lg no-print">
+                <i class="fas fa-plus text-xl"></i>
+            </button>
+
+            <!-- Main Content -->
+            <div id="mainContent" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"></div>
+        </div>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modalContainer"></div>
+
+    <!-- Module Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/supabaseManager.js"></script>
+    <script src="js/dataManager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/viewManager.js"></script>
+    <script src="js/calendarManager.js"></script>
+    <script src="js/memberManager.js"></script>
+    <script src="js/performanceManager.js"></script>
+    <script src="js/backupManager.js"></script>
+    <script src="js/pdfExporter.js"></script>
+    <script src="js/tvMode.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
